@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { Page } from "../layout/Page";
 // import { CoreDataGrid } from "../components/CoreDataGrid";
 import { InteractiveDataGrid } from "../components/InteractiveDataGrid";
-import { GridColDef, GridRowParams } from "@mui/x-data-grid";
+import { GridColDef } from "@mui/x-data-grid";
 import { Loading } from "../components/Loading";
 import { Episode } from "../components/drawers/Episode";
 import { IEpisodesData, IEpisodesVars } from "../interfaces";
@@ -32,9 +32,9 @@ export const Episodes: React.FC<Props> = ({ label }) => {
   if (loading) return <Loading />;
   if (error) return <p>Error :(</p>;
 
-  function onClickRow(row: any) {
-    setSearchParams({ id: row.id });
-    setSelectedId(parseInt(row.id));
+  function onClickRow(id: string) {
+    setSearchParams({ id });
+    setSelectedId(parseInt(id));
   }
 
   function onClose() {

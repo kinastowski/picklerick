@@ -1,4 +1,4 @@
-import { GridColDef, GridRowParams } from "@mui/x-data-grid";
+import { GridColDef } from "@mui/x-data-grid";
 import React from "react";
 import { CoreDataGrid } from "../CoreDataGrid";
 import { useNavigate } from "react-router-dom";
@@ -21,8 +21,8 @@ export const Episodes: React.FC<Props> = ({ id }) => {
     variables: { id },
   });
 
-  function onClickRow(row: GridRowParams) {
-    navigate(`/episodes?id=${row.id}`);
+  function onClickRow(id: string) {
+    navigate(`/episodes?id=${id}`);
   }
 
   if (loading) return <Loading />;

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { CoreDataGrid } from "./CoreDataGrid";
 import Box from "@mui/material/Box";
-import { GridColDef, GridRowParams } from "@mui/x-data-grid";
+import { GridColDef } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import { ICharacter, ILocation, IEpisode, RefetchObject } from "../interfaces";
 

@@ -5,7 +5,7 @@ import { Page } from "../layout/Page";
 // import { CoreDataGrid } from "../components/CoreDataGrid";
 import { InteractiveDataGrid } from "../components/InteractiveDataGrid";
 import { Location } from "../components/drawers/Location";
-import { GridColDef, GridRowParams } from "@mui/x-data-grid";
+import { GridColDef } from "@mui/x-data-grid";
 
 import { Loading } from "../components/Loading";
 import { ILocationsData, ILocationsVars } from "../interfaces";
@@ -30,11 +30,14 @@ export const Locations: React.FC<Props> = ({ label }) => {
   }, [searchParams]);
 
   if (loading) return <Loading />;
-  if (error) return <p>Error :(</p>;
+  if (error) {
+    console.log(error);
+    return <p>Error :(</p>;
+  }
 
-  function onClickRow(row: any) {
-    setSearchParams({ id: row.id });
-    setSelectedId(parseInt(row.id));
+  function onClickRow(id: string) {
+    setSearchParams({ id });
+    setSelectedId(parseInt(id));
   }
 
   function onClose() {

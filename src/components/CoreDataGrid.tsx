@@ -1,7 +1,6 @@
 import React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Box, TextField, Button } from "@mui/material";
-import { GridRowParams } from "@mui/x-data-grid";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
@@ -26,7 +25,7 @@ export const CoreDataGrid: React.FC<Props> = ({
   columns,
   searchLabel,
 }) => {
-  const [search, setSearch] = React.useState<string | null>(null);
+  const [search, setSearch] = React.useState<string>("");
   const [filter, setFilter] = React.useState<string>("name");
 
   const handleChangeFilter = (event: SelectChangeEvent) => {

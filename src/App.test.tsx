@@ -14,6 +14,7 @@ import { act } from "react-dom/test-utils";
 import { unmountComponentAtNode } from "react-dom";
 import {
   GET_LOCATION,
+  GET_LOCATIONS,
   GET_CHARACTER,
   GET_CHARACTER_EPISODES,
   GET_EPISODE,
@@ -230,7 +231,7 @@ it("renders Episode drawer component without error", async () => {
   // expect(await screen.findByText("/Sanchez/")).toBeInTheDocument();
 });
 
-it("renders Location drawer component without error", async () => {
+it("renders Locations drawer component without error", async () => {
   const mocks = [
     {
       request: {
@@ -284,35 +285,212 @@ it("renders Line component", async () => {
   expect(await screen.findByText("value_test")).toBeInTheDocument();
 });
 
-it("changes value when clicked", () => {
-  const onChange = jest.fn();
-  act(() => {
-    render(
-      <MemoryRouter>
-        <MockedProvider>
-          <Locations />
-        </MockedProvider>
-      </MemoryRouter>
-    );
-  });
+it("renders Locations component without error", async () => {
+  const mocks = [
+    {
+      request: {
+        query: GET_LOCATIONS,
+      },
+      result: {
+        data: {
+          locations: {
+            info: {
+              count: 126,
+              pages: 7,
+              next: 2,
+              prev: null,
+              __typename: "Info",
+            },
+            results: [
+              {
+                id: "1",
+                name: "Earth (C-137)",
+                type: "Planet",
+                dimension: "Dimension C-137",
+                created: "2017-11-10T12:42:04.162Z",
+                __typename: "Location",
+              },
+              {
+                id: "2",
+                name: "Abadango",
+                type: "Cluster",
+                dimension: "unknown",
+                created: "2017-11-10T13:06:38.182Z",
+                __typename: "Location",
+              },
+              {
+                id: "3",
+                name: "Citadel of Ricks",
+                type: "Space station",
+                dimension: "unknown",
+                created: "2017-11-10T13:08:13.191Z",
+                __typename: "Location",
+              },
+              {
+                id: "4",
+                name: "Worldender's lair",
+                type: "Planet",
+                dimension: "unknown",
+                created: "2017-11-10T13:08:20.569Z",
+                __typename: "Location",
+              },
+              {
+                id: "5",
+                name: "Anatomy Park",
+                type: "Microverse",
+                dimension: "Dimension C-137",
+                created: "2017-11-10T13:08:46.060Z",
+                __typename: "Location",
+              },
+              {
+                id: "6",
+                name: "Interdimensional Cable",
+                type: "TV",
+                dimension: "unknown",
+                created: "2017-11-10T13:09:09.102Z",
+                __typename: "Location",
+              },
+              {
+                id: "7",
+                name: "Immortality Field Resort",
+                type: "Resort",
+                dimension: "unknown",
+                created: "2017-11-10T13:09:17.136Z",
+                __typename: "Location",
+              },
+              {
+                id: "8",
+                name: "Post-Apocalyptic Earth",
+                type: "Planet",
+                dimension: "Post-Apocalyptic Dimension",
+                created: "2017-11-10T13:09:22.551Z",
+                __typename: "Location",
+              },
+              {
+                id: "9",
+                name: "Purge Planet",
+                type: "Planet",
+                dimension: "Replacement Dimension",
+                created: "2017-11-10T13:09:29.566Z",
+                __typename: "Location",
+              },
+              {
+                id: "10",
+                name: "Venzenulon 7",
+                type: "Planet",
+                dimension: "unknown",
+                created: "2017-11-18T11:21:51.643Z",
+                __typename: "Location",
+              },
+              {
+                id: "11",
+                name: "Bepis 9",
+                type: "Planet",
+                dimension: "unknown",
+                created: "2017-11-18T11:26:03.325Z",
+                __typename: "Location",
+              },
+              {
+                id: "12",
+                name: "Cronenberg Earth",
+                type: "Planet",
+                dimension: "Cronenberg Dimension",
+                created: "2017-11-18T11:29:27.857Z",
+                __typename: "Location",
+              },
+              {
+                id: "13",
+                name: "Nuptia 4",
+                type: "Planet",
+                dimension: "unknown",
+                created: "2017-11-18T11:30:29.780Z",
+                __typename: "Location",
+              },
+              {
+                id: "14",
+                name: "Giant's Town",
+                type: "Fantasy town",
+                dimension: "Fantasy Dimension",
+                created: "2017-11-18T11:31:15.248Z",
+                __typename: "Location",
+              },
+              {
+                id: "15",
+                name: "Bird World",
+                type: "Planet",
+                dimension: "unknown",
+                created: "2017-11-18T11:32:26.752Z",
+                __typename: "Location",
+              },
+              {
+                id: "16",
+                name: "St. Gloopy Noops Hospital",
+                type: "Space station",
+                dimension: "unknown",
+                created: "2017-11-18T11:43:20.075Z",
+                __typename: "Location",
+              },
+              {
+                id: "17",
+                name: "Earth (5-126)",
+                type: "Planet",
+                dimension: "Dimension 5-126",
+                created: "2017-11-18T11:41:08.486Z",
+                __typename: "Location",
+              },
+              {
+                id: "18",
+                name: "Mr. Goldenfold's dream",
+                type: "Dream",
+                dimension: "Dimension C-137",
+                created: "2017-11-18T11:46:22.933Z",
+                __typename: "Location",
+              },
+              {
+                id: "19",
+                name: "Gromflom Prime",
+                type: "Planet",
+                dimension: "Replacement Dimension",
+                created: "2017-11-18T11:39:52.165Z",
+                __typename: "Location",
+              },
+              {
+                id: "20",
+                name: "Earth (Replacement Dimension)",
+                type: "Planet",
+                dimension: "Replacement Dimension",
+                created: "2017-11-18T19:33:01.173Z",
+                __typename: "Location",
+              },
+            ],
+            __typename: "Locations",
+          },
+        },
+      },
+    },
+  ];
 
-  // get a hold of the button element, and trigger some clicks on it
-  // const button = document.querySelector("[data-testid=toggle]");
-  // expect(button.innerHTML).toBe("Turn on");
+  jest.useFakeTimers();
 
-  // act(() => {
-  //   button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-  // });
+  render(
+    <MemoryRouter>
+      <MockedProvider mocks={mocks}>
+        <Locations />
+      </MockedProvider>
+    </MemoryRouter>
+  );
+  expect(await screen.findByText("Loading...")).toBeInTheDocument();
 
-  // expect(onChange).toHaveBeenCalledTimes(1);
-  // expect(button.innerHTML).toBe("Turn off");
+  expect(await screen.findByText("Abadango")).toBeInTheDocument();
+  expect(await screen.findByText("Earth (C-137)")).toBeInTheDocument();
 
-  // act(() => {
-  //   for (let i = 0; i < 5; i++) {
-  //     button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-  //   }
-  // });
+  // const button = await screen.findByTestId("show-1");
+  // console.log(button, "!!");
+  // if (button) {
+  //   expect(button.innerHTML).toBe("SHOW");
 
-  // expect(onChange).toHaveBeenCalledTimes(6);
-  // expect(button.innerHTML).toBe("Turn on");
+  //   // act(() => {
+  //   //   button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  //   // });
+  // }
 });
