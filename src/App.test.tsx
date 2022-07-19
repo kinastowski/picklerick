@@ -10,6 +10,7 @@ import { Episodes } from "./components/drawers/Episodes";
 import { Episode } from "./components/drawers/Episode";
 import { Location } from "./components/drawers/Location";
 import { Line } from "./components/Line";
+import { Paragraph } from "./components/Paragraph";
 import { act } from "react-dom/test-utils";
 import { unmountComponentAtNode } from "react-dom";
 import {
@@ -18,7 +19,9 @@ import {
   GET_CHARACTER,
   GET_CHARACTER_EPISODES,
   GET_EPISODE,
+  GET_CHARACTERS,
 } from "./graphql/queries";
+import { Characters } from "./pages/characters";
 
 it("renders Character component without error", async () => {
   const mocks = [
@@ -470,8 +473,6 @@ it("renders Locations component without error", async () => {
     },
   ];
 
-  jest.useFakeTimers();
-
   render(
     <MemoryRouter>
       <MockedProvider mocks={mocks}>
@@ -483,4 +484,257 @@ it("renders Locations component without error", async () => {
 
   expect(await screen.findByText("Abadango")).toBeInTheDocument();
   expect(await screen.findByText("Earth (C-137)")).toBeInTheDocument();
+});
+
+it("renders Characters component without error", async () => {
+  const mocks = [
+    {
+      request: {
+        query: GET_CHARACTERS,
+      },
+      result: {
+        data: {
+          characters: {
+            info: {
+              count: 826,
+              pages: 42,
+              next: 2,
+              prev: null,
+              __typename: "Info",
+            },
+            results: [
+              {
+                id: "1",
+                name: "Rick Sanchez",
+                status: "Alive",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "2",
+                name: "Morty Smith",
+                status: "Alive",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "3",
+                name: "Summer Smith",
+                status: "Alive",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
+                gender: "Female",
+                __typename: "Character",
+              },
+              {
+                id: "4",
+                name: "Beth Smith",
+                status: "Alive",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
+                gender: "Female",
+                __typename: "Character",
+              },
+              {
+                id: "5",
+                name: "Jerry Smith",
+                status: "Alive",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/5.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "6",
+                name: "Abadango Cluster Princess",
+                status: "Alive",
+                species: "Alien",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/6.jpeg",
+                gender: "Female",
+                __typename: "Character",
+              },
+              {
+                id: "7",
+                name: "Abradolf Lincler",
+                status: "unknown",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/7.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "8",
+                name: "Adjudicator Rick",
+                status: "Dead",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/8.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "9",
+                name: "Agency Director",
+                status: "Dead",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/9.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "10",
+                name: "Alan Rails",
+                status: "Dead",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/10.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "11",
+                name: "Albert Einstein",
+                status: "Dead",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/11.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "12",
+                name: "Alexander",
+                status: "Dead",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/12.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "13",
+                name: "Alien Googah",
+                status: "unknown",
+                species: "Alien",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/13.jpeg",
+                gender: "unknown",
+                __typename: "Character",
+              },
+              {
+                id: "14",
+                name: "Alien Morty",
+                status: "unknown",
+                species: "Alien",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/14.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "15",
+                name: "Alien Rick",
+                status: "unknown",
+                species: "Alien",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/15.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "16",
+                name: "Amish Cyborg",
+                status: "Dead",
+                species: "Alien",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/16.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "17",
+                name: "Annie",
+                status: "Alive",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/17.jpeg",
+                gender: "Female",
+                __typename: "Character",
+              },
+              {
+                id: "18",
+                name: "Antenna Morty",
+                status: "Alive",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/18.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "19",
+                name: "Antenna Rick",
+                status: "unknown",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/19.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+              {
+                id: "20",
+                name: "Ants in my Eyes Johnson",
+                status: "unknown",
+                species: "Human",
+                image:
+                  "https://rickandmortyapi.com/api/character/avatar/20.jpeg",
+                gender: "Male",
+                __typename: "Character",
+              },
+            ],
+            __typename: "Characters",
+          },
+        },
+      },
+    },
+  ];
+
+  render(
+    <MemoryRouter>
+      <MockedProvider mocks={mocks}>
+        <Characters />
+      </MockedProvider>
+    </MemoryRouter>
+  );
+  expect(await screen.findByText("Loading...")).toBeInTheDocument();
+  expect(await screen.findAllByText("Rick Sanchez")).toHaveLength(1);
+});
+
+it("renders Paragraph component", async () => {
+  act(() => {
+    render(
+      <Paragraph
+        label="label_test"
+        value={{
+          test_value1: "test",
+          test_value2: "test",
+        }}
+      />
+    );
+  });
+  expect(await screen.findAllByText("label_test")).toHaveLength(1);
+  // expect(await screen.findByText("value_test")).toBeInTheDocument();
+  expect(await screen.findAllByText("test")).toHaveLength(2);
 });
