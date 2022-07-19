@@ -483,14 +483,4 @@ it("renders Locations component without error", async () => {
 
   expect(await screen.findByText("Abadango")).toBeInTheDocument();
   expect(await screen.findByText("Earth (C-137)")).toBeInTheDocument();
-
-  // const button = await screen.findByTestId("show-1");
-  // console.log(button, "!!");
-  // if (button) {
-  //   expect(button.innerHTML).toBe("SHOW");
-
-  //   // act(() => {
-  //   //   button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-  //   // });
-  // }
 });
